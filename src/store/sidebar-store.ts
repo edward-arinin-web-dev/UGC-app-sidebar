@@ -65,9 +65,9 @@ const INITIAL_PROMPT =
   "Animate glowing rays pulsating from behind the bottle, leaves gently swaying, and golden sparkles floating upward for a natural, radiant effect.";
 
 export const useSidebarStore = create<SidebarState>((set, get) => ({
-  isOpen: true,
+  isOpen: false,
   open: () => set({ isOpen: true }),
-  close: () => set({ isOpen: true }),
+  close: () => set({ isOpen: false }),
 
   prompt: INITIAL_PROMPT,
   setPrompt: (text: string) => set({ prompt: text }),
