@@ -4,43 +4,37 @@ import type { BackgroundItem } from "@/types/sidebar";
 const MOCK_BACKGROUNDS: BackgroundItem[] = [
   {
     id: "bg-1",
-    imageUrl:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=700&fit=crop",
+    imageUrl: "/images/background.png",
     isDefault: true,
     status: "ready",
   },
   {
     id: "bg-2",
-    imageUrl:
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=700&fit=crop",
+    imageUrl: "/images/background.png",
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-3",
-    imageUrl:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=700&fit=crop",
+    imageUrl: "/images/background.png",
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-4",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=700&fit=crop",
+    imageUrl: "/images/background.png",
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-5",
-    imageUrl:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=700&fit=crop",
+    imageUrl: "/images/background.png",
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-6",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=700&fit=crop",
+    imageUrl: "/images/background.png",
     isDefault: false,
     status: "ready",
   },
@@ -69,9 +63,9 @@ const INITIAL_PROMPT =
   "Animate glowing rays pulsating from behind the bottle, leaves gently swaying, and golden sparkles floating upward for a natural, radiant effect.";
 
 export const useSidebarStore = create<SidebarState>((set, get) => ({
-  isOpen: false,
+  isOpen: true,
   open: () => set({ isOpen: true }),
-  close: () => set({ isOpen: false }),
+  close: () => set({ isOpen: true }),
 
   prompt: INITIAL_PROMPT,
   setPrompt: (text: string) => set({ prompt: text }),
@@ -152,7 +146,6 @@ export const useSidebarStore = create<SidebarState>((set, get) => ({
             isGenerating: isComplete ? false : true,
             backgrounds: state.backgrounds.map((bg) => {
               if (bg.id !== newId) {
-                // Remove default from others when complete
                 return isComplete ? { ...bg, isDefault: false } : bg;
               }
               return {
@@ -161,9 +154,7 @@ export const useSidebarStore = create<SidebarState>((set, get) => ({
                 progress,
                 timeRemaining: timeLabels[i],
                 isDefault: isComplete,
-                imageUrl: isComplete
-                  ? "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=700&fit=crop"
-                  : "",
+                imageUrl: isComplete ? "/images/background.png" : "",
               };
             }),
           }));
