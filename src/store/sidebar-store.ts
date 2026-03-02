@@ -1,40 +1,42 @@
 import { create } from "zustand";
 import type { BackgroundItem } from "@/types/sidebar";
 
+const BASE = import.meta.env.BASE_URL;
+
 const MOCK_BACKGROUNDS: BackgroundItem[] = [
   {
     id: "bg-1",
-    imageUrl: "/images/background.png",
+    imageUrl: `${BASE}images/background.png`,
     isDefault: true,
     status: "ready",
   },
   {
     id: "bg-2",
-    imageUrl: "/images/background.png",
+    imageUrl: `${BASE}images/background.png`,
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-3",
-    imageUrl: "/images/background.png",
+    imageUrl: `${BASE}images/background.png`,
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-4",
-    imageUrl: "/images/background.png",
+    imageUrl: `${BASE}images/background.png`,
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-5",
-    imageUrl: "/images/background.png",
+    imageUrl: `${BASE}images/background.png`,
     isDefault: false,
     status: "ready",
   },
   {
     id: "bg-6",
-    imageUrl: "/images/background.png",
+    imageUrl: `${BASE}images/background.png`,
     isDefault: false,
     status: "ready",
   },
@@ -154,7 +156,7 @@ export const useSidebarStore = create<SidebarState>((set, get) => ({
                 progress,
                 timeRemaining: timeLabels[i],
                 isDefault: isComplete,
-                imageUrl: isComplete ? "/images/background.png" : "",
+                imageUrl: isComplete ? `${BASE}images/background.png` : "",
               };
             }),
           }));
